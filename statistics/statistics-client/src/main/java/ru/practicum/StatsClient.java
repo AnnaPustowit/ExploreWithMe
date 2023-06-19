@@ -21,7 +21,7 @@ import java.util.List;
 @Service
 public class StatsClient {
 
-    final static CloseableHttpClient httpClient = HttpClients.createDefault();
+    static final CloseableHttpClient httpClient = HttpClients.createDefault();
 
     public void saveStats(String app, String uri, String ip, String timestamp) throws Exception {
         HttpPost request = new HttpPost("http://localhost:9090/hit");
