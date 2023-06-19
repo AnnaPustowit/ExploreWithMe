@@ -13,6 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,20 +25,21 @@ public class StatsClient {
 
     public void saveStats(String app, String uri, String ip, String timestamp) throws Exception {
         HttpPost request = new HttpPost("http://localhost:9090/hit");
-        final EndpointHitDto endpointHit = new EndpointHitDto(app, uri,ip,timestamp);
+        final EndpointHitDto endpointHit = new EndpointHitDto(app, uri, ip, timestamp);
         ObjectMapper mapper = new ObjectMapper();
         StringEntity json = new StringEntity(mapper.writeValueAsString(endpointHit), ContentType.APPLICATION_JSON);
         request.setEntity(json);
         CloseableHttpResponse response = httpClient.execute(request);
-        if(response.getStatusLine().getStatusCode() != 200) {
+        if (response.getStatusLine().getStatusCode() != 200) {
             log.info("Ошибка - " + response.getStatusLine().getStatusCode());
         }
     }
+
     public List<ViewStatsDto> getStats() throws Exception {
         HttpGet request = new HttpGet("http://localhost:9090/stats");
         CloseableHttpResponse response = httpClient.execute(request);
         HttpEntity entity = response.getEntity();
-        if(response.getStatusLine().getStatusCode() != 200) {
+        if (response.getStatusLine().getStatusCode() != 200) {
             log.info("Ошибка - " + response.getStatusLine().getStatusCode());
         }
 
