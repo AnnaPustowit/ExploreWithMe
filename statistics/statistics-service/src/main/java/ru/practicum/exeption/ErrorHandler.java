@@ -14,16 +14,16 @@ import java.util.Map;
 public class ErrorHandler {
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleValidationException(final ValidateException exception) {
+    public Map<String, String> handleValidateException(ValidateException exception) {
         log.error("Код ошибки: {}, {}", HttpStatus.BAD_REQUEST, exception.getMessage());
         return Map.of("error", exception.getMessage());
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleValidationException(MethodArgumentNotValidException e) {
-        log.error("Код ошибки: {}, {}", HttpStatus.BAD_REQUEST, e.getMessage());
-        return Map.of("error", e.getMessage());
+    public Map<String, String> handleValidationException(MethodArgumentNotValidException exception) {
+        log.error("Код ошибки: {}, {}", HttpStatus.BAD_REQUEST, exception.getMessage());
+        return Map.of("error", exception.getMessage());
     }
 
     @ExceptionHandler
