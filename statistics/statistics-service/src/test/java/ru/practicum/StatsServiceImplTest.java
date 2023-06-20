@@ -34,12 +34,15 @@ public class StatsServiceImplTest {
 
     @BeforeEach
     void setUp() {
+        LocalDateTime date1 = LocalDateTime.of(2023, 6, 19, 11, 0, 0);
+        LocalDateTime date2 = LocalDateTime.of(2023, 6, 19, 11, 0, 0);
+        LocalDateTime date3 = LocalDateTime.of(2023, 6, 19, 11, 0, 0);
         dto = new EndpointHitDto("test", "/events/1", "1.1.1.1",
-                "2023-06-19 11:00:00");
+                date1);
         dto2 = new EndpointHitDto("test", "/events/2", "1.1.1.1",
-                "2023-06-19 11:00:00");
+                date2);
         dto3 = new EndpointHitDto("test", "/events/2", "1.1.1.1",
-                "2023-06-19 11:00:00");
+                date3);
     }
 
     @Test
