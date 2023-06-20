@@ -3,6 +3,7 @@ package ru.practicum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -16,6 +17,7 @@ public class EndpointHitDto {
     @NotNull
     private String app;
     @NotNull
+    @NotEmpty
     private String uri;
     @NotNull
     private String ip;
