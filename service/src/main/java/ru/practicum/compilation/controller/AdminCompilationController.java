@@ -40,6 +40,4 @@ public class AdminCompilationController {
         compilationsService.deleteCompilationById(id);
         log.info("Удаление подборки событий по ее id {}", id);
     }
-
-
 }

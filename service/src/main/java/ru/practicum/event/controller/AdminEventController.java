@@ -34,7 +34,7 @@ public class AdminEventController {
             @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
             @Positive @RequestParam(defaultValue = "10") Integer size,
             HttpServletRequest request) {
-        List<EventFullDto> events= eventService.searchEventsByAdmin(users, states, categories, rangeStart, rangeEnd, size, from, request);
+        List<EventFullDto> events = eventService.searchEventsByAdmin(users, states, categories, rangeStart, rangeEnd, size, from, request);
         log.info("Поиск событий");
         return events;
     }
