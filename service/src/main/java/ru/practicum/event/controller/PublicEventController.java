@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.model.Sort;
-import ru.practicum.event.service.EventServiceImpl;
+import ru.practicum.event.service.EventService;
 import ru.practicum.exeption.InvalidParameterException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(path = "/events")
 public class PublicEventController {
-    private final EventServiceImpl eventService;
+    private final EventService eventService;
 
     @GetMapping
     public List<EventFullDto> searchEventsPublic(

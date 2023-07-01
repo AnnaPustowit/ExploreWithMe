@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.practicum.exeption.ConflictException;
 import ru.practicum.exeption.EntityNotFoundException;
 import ru.practicum.request.model.Request;
-import ru.practicum.request.service.RequestServiceImpl;
+import ru.practicum.request.service.RequestService;
 
 import javax.validation.constraints.Positive;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(path = "/users/{userId}/requests")
 public class PrivateRequestController {
-    private final RequestServiceImpl requestService;
+    private final RequestService requestService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

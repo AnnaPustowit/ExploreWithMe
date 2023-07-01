@@ -9,7 +9,7 @@ import ru.practicum.exeption.ConflictException;
 import ru.practicum.exeption.InvalidParameterException;
 import ru.practicum.exeption.EntityNotFoundException;
 import ru.practicum.user.model.User;
-import ru.practicum.user.service.UserServiceImpl;
+import ru.practicum.user.service.UserService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -22,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping(path = "/admin/users")
 public class AdminUserController {
-    private final UserServiceImpl userService;
+    private final UserService userService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

@@ -12,7 +12,7 @@ import ru.practicum.event.service.EventService;
 import ru.practicum.request.dto.RequestUpdateDto;
 import ru.practicum.request.dto.RequestUpdateResultDto;
 import ru.practicum.request.model.Request;
-import ru.practicum.request.service.RequestServiceImpl;
+import ru.practicum.request.service.RequestService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping(path = "/users/{userId}/events")
 public class PrivateEventController {
     private final EventService eventService;
-    private final RequestServiceImpl requestService;
+    private final RequestService requestService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

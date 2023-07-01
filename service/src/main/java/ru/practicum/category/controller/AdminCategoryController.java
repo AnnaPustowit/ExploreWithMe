@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.category.model.Category;
-import ru.practicum.category.service.CategoryServiceImpl;
+import ru.practicum.category.service.CategoryService;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
@@ -17,7 +17,7 @@ import javax.validation.constraints.Positive;
 @RequiredArgsConstructor
 @RequestMapping(path = "/admin/categories")
 public class AdminCategoryController {
-    private final CategoryServiceImpl categoryService;
+    private final CategoryService categoryService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
