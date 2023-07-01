@@ -13,12 +13,12 @@ import ru.practicum.user.dto.UserShortDto;
 @NoArgsConstructor
 public class ShortEventDto {
     private Long id;
-    private String annotation; // краткое описание
-    private CategoryDto category; // категория
-    private Integer confirmedRequests; // одобренные заяавки
+    private String annotation;
+    private CategoryDto category;
+    private Integer confirmedRequests;
     private String eventDate;
     private UserShortDto initiator;
-    private Boolean paid; // платно ли
+    private Boolean paid;
     private String title;
-    private Long views; // количество просмотров
+    private Long views;
 }

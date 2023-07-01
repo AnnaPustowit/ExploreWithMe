@@ -12,15 +12,8 @@ import java.util.List;
 public interface EventService {
     EventFullDto addEvent(Long id, NewEventDto eventNewDto);
 
-    List<EventFullDto> searchEventsPublic(String text,
-                                          String categories,
-                                          Boolean paid,
-                                          String rangeStart,
-                                          String rangeEnd,
-                                          Boolean onlyAvailable,
-                                          Sort sort,
-                                          Integer from,
-                                          Integer size,
+    List<EventFullDto> searchEventsPublic(String text, String categories, Boolean paid, String rangeStart,
+                                          String rangeEnd, Boolean onlyAvailable, Sort sort, Integer from, Integer size,
                                           HttpServletRequest request);
 
     EventFullDto getByEventId(Long id, HttpServletRequest request);

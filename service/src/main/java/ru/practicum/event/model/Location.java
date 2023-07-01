@@ -18,8 +18,8 @@ public class Location {
     Long id;
 
     @NonNull
-    Float lat; // широта
+    Float lat;
 
     @NonNull
-    Float lon; // долгота
+    Float lon;
 }

@@ -14,10 +14,8 @@ import ru.practicum.event.model.Event;
 import ru.practicum.event.repository.EventRepository;
 import ru.practicum.exeption.InvalidParameterException;
 
-
 import java.util.List;
 import java.util.stream.Collectors;
-
 
 @Service
 @Slf4j

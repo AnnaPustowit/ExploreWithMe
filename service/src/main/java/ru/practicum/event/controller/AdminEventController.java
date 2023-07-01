@@ -38,7 +38,6 @@ public class AdminEventController {
         return eventService.searchEventsByAdmin(users, states, categories, rangeStart, rangeEnd, size, from, request);
     }
 
-
     @PatchMapping("/{eventId}")
     public EventFullDto updateEventByAdmin(@PathVariable @Positive Long eventId,
                                            @Valid @RequestBody UpdateEventDto updateEventDto,

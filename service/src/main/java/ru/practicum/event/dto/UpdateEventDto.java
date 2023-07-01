@@ -14,7 +14,6 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @Builder
 public class UpdateEventDto {
-
     Long id;
 
     @Size(max = 120)

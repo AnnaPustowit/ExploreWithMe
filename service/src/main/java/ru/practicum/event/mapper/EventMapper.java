@@ -39,8 +39,7 @@ public class EventMapper {
         );
     }
 
-    public static EventFullDto toEventFullDtoWhenCreate(
-            Event event, LocationDto locationDto, UserShortDto userShortDto, Long views) {
+    public static EventFullDto toEventFullDtoWhenCreate(Event event, LocationDto locationDto, UserShortDto userShortDto, Long views) {
         return new EventFullDto(
                 event.getId(),
                 event.getTitle(),
@@ -61,8 +60,7 @@ public class EventMapper {
         );
     }
 
-    public static ShortEventDto toShortEventDto(
-            Event event) {
+    public static ShortEventDto toShortEventDto(Event event) {
         return new ShortEventDto(
                 event.getId(),
                 event.getAnnotation(),
@@ -97,9 +95,7 @@ public class EventMapper {
         );
     }
 
-    public static EventFullDto toEventFullDtoWhenSearch(Event event,
-                                                        Map<Long, Long> eventViewsMap,
-                                                        Map<Long, Long> confirmedRequestsMap) {
+    public static EventFullDto toEventFullDtoWhenSearch(Event event, Map<Long, Long> eventViewsMap, Map<Long, Long> confirmedRequestsMap) {
         return new EventFullDto(
                 event.getId(),
                 event.getTitle(),

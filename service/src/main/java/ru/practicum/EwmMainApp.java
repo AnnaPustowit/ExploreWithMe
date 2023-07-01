@@ -1,4 +1,5 @@
 package ru.practicum;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -10,6 +11,7 @@ public class EwmMainApp {
     public static void main(String[] args) {
         SpringApplication.run(EwmMainApp.class, args);
     }
+
     @Bean
     public RestTemplate restTemplate(RestTemplateBuilder builder) {
         return builder.build();
