@@ -67,7 +67,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (eventRepository.findAllByCategoryId(categoryId).isEmpty()) {
             categoryRepository.deleteById(categoryId);
         } else {
-            throw new ConflictException("Нельзя удалить категорию с id: {}" + categoryId);
+            throw new ConflictException("Нельзя удалить категорию с id: " + categoryId);
         }
     }
 }

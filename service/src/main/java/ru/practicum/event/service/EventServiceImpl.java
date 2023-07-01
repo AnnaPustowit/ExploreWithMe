@@ -86,7 +86,7 @@ public class EventServiceImpl implements EventService {
             event.setConfirmedRequests(confirmedRequests);
             return EventMapper.toEventFullDtoWhenCreate(event, locationDto, userShortDto, 0L);
         } else {
-            throw new InvalidParameterException("Проверьте дату события.");
+            throw new InvalidParameterException("Некорректная дата события");
         }
     }
 
@@ -123,7 +123,7 @@ public class EventServiceImpl implements EventService {
             throw new EntityNotFoundException("Нет события с id: " + eventId);
         }
         if (!event.get().getInitiator().getId().equals(userId)) {
-            throw new EntityNotFoundException("События с id: " + eventId + "созданного пользователем c id: " + userId);
+            throw new EntityNotFoundException("Нет события с id: " + eventId + "созданного пользователем c id: " + userId);
         }
 
         String eventUri = URI + event.get().getId();
@@ -208,7 +208,7 @@ public class EventServiceImpl implements EventService {
             throw new EntityNotFoundException("Нет события с id: " + eventId);
         }
         if (!event.get().getInitiator().getId().equals(userId)) {
-            throw new InvalidParameterException("Пользователь не может изменять не свои события");
+            throw new InvalidParameterException("Пользователь не может изменять чужие события");
         }
 
         if (event.get().getState().equals(EventState.PUBLISHED)) {
@@ -221,7 +221,7 @@ public class EventServiceImpl implements EventService {
             startTime = LocalDateTime.parse(eventUpdateDto.getEventDate(), dateTimeFormatter);
         }
         if (startTime.isBefore(LocalDateTime.now().plusHours(HOURS_BEFORE_START))) {
-            throw new InvalidParameterException("Дата и время на которые намечено событие не может быть раньше, чем через два часа от текущего момента");
+            throw new InvalidParameterException("Дата и время на которые намечено событие не может быть раньше, чем через 2 часа от текущего момента");
         }
 
         checkAndUpdateEvent(eventUpdateDto, event.get());
@@ -313,7 +313,7 @@ public class EventServiceImpl implements EventService {
             EventFullDto ed = EventMapper.toEventFullDto(eventRepository.save(event.get()), views);
             return ed;
         } else {
-            throw new InvalidParameterException("Проверьте статус и время начала события.");
+            throw new InvalidParameterException("Некорректные данные: статус или время начала события");
         }
     }
 

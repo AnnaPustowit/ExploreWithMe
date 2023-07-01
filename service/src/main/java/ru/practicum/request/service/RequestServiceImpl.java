@@ -54,7 +54,7 @@ public class RequestServiceImpl implements RequestService {
             throw new ConflictException("Такого события нет. Запрос отклонен");
         }
         if (Objects.equals(event.get().getInitiator().getId(), userId)) {
-            throw new ConflictException("Запрос на собственное событие отклонен");
+            throw new ConflictException("Запрос на свое событие отклонен");
         }
 
         Integer confirmedRequestCount = requestRepository.getConfirmedRequestsByEventId(eventId);
