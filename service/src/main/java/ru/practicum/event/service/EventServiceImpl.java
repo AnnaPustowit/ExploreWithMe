@@ -67,7 +67,7 @@ public class EventServiceImpl implements EventService {
     private final StatsClient statClient;
 
     @Override
-    public EventFullDto addEvent(Long userId, NewEventDto newEventDto) {
+    public EventFullDto createEvent(Long userId, NewEventDto newEventDto) {
         Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()) {
             throw new EntityNotFoundException("Нет пользователя с id: " + userId);

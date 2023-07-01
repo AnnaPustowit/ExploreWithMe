@@ -20,7 +20,6 @@ import java.util.List;
 public class PublicCompilationController {
     private final CompilationsService compilationsService;
 
-
     @GetMapping
     public List<CompilationDto> getAllCompilations(@RequestParam(required = false) Boolean pinned,
                                                    @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,

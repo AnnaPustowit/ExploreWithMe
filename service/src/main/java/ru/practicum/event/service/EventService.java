@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventService {
-    EventFullDto addEvent(Long id, NewEventDto eventNewDto);
+    EventFullDto createEvent(Long id, NewEventDto eventNewDto);
 
     List<EventFullDto> searchEventsPublic(String text, String categories, Boolean paid, String rangeStart,
                                           String rangeEnd, Boolean onlyAvailable, Sort sort, Integer from, Integer size,

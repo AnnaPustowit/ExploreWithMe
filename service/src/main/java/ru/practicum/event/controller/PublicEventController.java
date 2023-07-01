@@ -32,14 +32,16 @@ public class PublicEventController {
             @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
             @Positive @RequestParam(defaultValue = "10") Integer size,
             HttpServletRequest request) throws InvalidParameterException {
+        List<EventFullDto> events = eventService.searchEventsPublic(text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, request);
         log.info("Получение событий");
-        return eventService.searchEventsPublic(text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size, request);
+        return events;
     }
 
     @GetMapping("/{id}")
     public EventFullDto getEventByEventId(@PathVariable @Positive Long id,
                                           HttpServletRequest request) {
+        EventFullDto event = eventService.getByEventId(id, request);
         log.info("Получить информации о событии по его id: {}", id);
-        return eventService.getByEventId(id, request);
+        return event;
     }
 }

@@ -34,15 +34,17 @@ public class AdminEventController {
             @PositiveOrZero @RequestParam(defaultValue = "0") Integer from,
             @Positive @RequestParam(defaultValue = "10") Integer size,
             HttpServletRequest request) {
-        log.info("Получить список событий");
-        return eventService.searchEventsByAdmin(users, states, categories, rangeStart, rangeEnd, size, from, request);
+        List<EventFullDto> events= eventService.searchEventsByAdmin(users, states, categories, rangeStart, rangeEnd, size, from, request);
+        log.info("Поиск событий");
+        return events;
     }
 
     @PatchMapping("/{eventId}")
     public EventFullDto updateEventByAdmin(@PathVariable @Positive Long eventId,
                                            @Valid @RequestBody UpdateEventDto updateEventDto,
                                            HttpServletRequest request) {
-        log.info("Обновление событий");
-        return eventService.updateByAdmin(eventId, updateEventDto, request);
+        EventFullDto event = eventService.updateByAdmin(eventId, updateEventDto, request);
+        log.info("Редактирование данных события");
+        return event;
     }
 }

@@ -20,8 +20,9 @@ public class PublicCategoryController {
     public List<Category> getAllCategories(
             @RequestParam(defaultValue = "10") @Positive Integer size,
             @RequestParam(defaultValue = "0") @Positive Integer from) {
+        List<Category> categories = categoryService.getAllCategories(size, from);
         log.info("Получение категорий");
-        return categoryService.getAllCategories(size, from);
+        return categories;
     }
 
     @GetMapping("/{catId}")

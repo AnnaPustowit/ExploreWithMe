@@ -30,8 +30,9 @@ public class AdminCategoryController {
     @PatchMapping("/{id}")
     public Category updateCategory(@Positive @PathVariable Long id,
                                    @RequestBody @Valid Category category) {
+        Category updateCategory = categoryService.updateCategory(id, category);
         log.info("Изменение категории по id: {}", id);
-        return categoryService.updateCategory(id, category);
+        return updateCategory;
     }
 
     @DeleteMapping("/{id}")
