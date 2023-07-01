@@ -5,9 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.practicum.exeption.ConflictException;
 import ru.practicum.exeption.InvalidParameterException;
-import ru.practicum.exeption.EntityNotFoundException;
 import ru.practicum.user.model.User;
 import ru.practicum.user.service.UserService;
 
@@ -26,7 +24,7 @@ public class AdminUserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@RequestBody @Valid User user) throws InvalidParameterException, ConflictException {
+    public User createUser(@RequestBody @Valid User user) throws InvalidParameterException {
         User newUser = userService.createUser(user);
         log.info("Создание пользователя: {}: ", user);
         return newUser;
@@ -43,7 +41,7 @@ public class AdminUserController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public User deleteUserById(@Positive @PathVariable Long id) throws EntityNotFoundException, InvalidParameterException {
+    public User deleteUserById(@Positive @PathVariable Long id) {
         User removeUser = userService.deleteUserById(id);
         log.info("Удаление пользователя по id {}: ", id);
         return removeUser;
