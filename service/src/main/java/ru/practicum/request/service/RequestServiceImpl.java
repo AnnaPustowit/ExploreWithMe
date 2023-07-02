@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.event.model.Event;
 import ru.practicum.event.model.EventState;
 import ru.practicum.event.repository.EventRepository;
@@ -30,11 +31,14 @@ import java.util.Optional;
 @Service
 @Getter
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class RequestServiceImpl implements RequestService {
     private final RequestRepository requestRepository;
     private final EventRepository eventRepository;
     private final UserRepository userRepository;
 
+
+    @Transactional
     @Override
     public Request createRequest(Long userId, Long eventId) {
         Optional<User> user = userRepository.findById(userId);
@@ -88,12 +92,14 @@ public class RequestServiceImpl implements RequestService {
     }
 
     @Override
+    @Transactional
     public Request updateRequestStatusToCancel(Long userId, Long requestId) {
         Request request = requestRepository.getReferenceById(requestId);
         request.setStatus(RequestState.CANCELED);
         return requestRepository.save(request);
     }
 
+    @Transactional
     @Override
     public RequestUpdateResultDto updateRequestsStatus(Long userId, Long eventId, RequestUpdateDto requestUpdateDto) {
         Optional<Event> event = eventRepository.findById(eventId);
