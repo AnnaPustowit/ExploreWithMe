@@ -8,6 +8,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.practicum.EndpointHitDto;
 import ru.practicum.ViewStatsDto;
+import ru.practicum.exeption.ValidateException;
 import ru.practicum.service.StatsService;
 
 import java.time.LocalDateTime;
@@ -34,7 +35,7 @@ public class StatsController {
             @RequestParam @DateTimeFormat(pattern = DATE_TIME_FORMAT) LocalDateTime start,
             @RequestParam @DateTimeFormat(pattern = DATE_TIME_FORMAT) LocalDateTime end,
             @RequestParam(defaultValue = "") List<String> uris,
-            @RequestParam(defaultValue = "false") boolean unique) {
+            @RequestParam(defaultValue = "false") boolean unique) throws ValidateException {
         List<ViewStatsDto> stats = statsService.getStats(start, end, uris, unique);
         log.info("Статистика получена.");
         return stats;
