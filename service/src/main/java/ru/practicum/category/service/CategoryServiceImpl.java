@@ -3,6 +3,7 @@ package ru.practicum.category.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
 import ru.practicum.event.repository.EventRepository;
@@ -16,10 +17,12 @@ import java.util.Optional;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class CategoryServiceImpl implements CategoryService {
     private final CategoryRepository categoryRepository;
     private final EventRepository eventRepository;
 
+    @Transactional
     @Override
     public Category createCategory(Category category) {
         if (category.getName().isBlank() || category.getName().isEmpty()) {
@@ -45,6 +48,7 @@ public class CategoryServiceImpl implements CategoryService {
         return category.get();
     }
 
+    @Transactional
     @Override
     public Category updateCategory(Long categoryId, Category updateCategory) {
         Optional<Category> category = categoryRepository.findById(categoryId);
@@ -58,6 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.save(category.get());
     }
 
+    @Transactional
     @Override
     public void deleteCategoryById(Long categoryId) {
         Optional<Category> category = categoryRepository.findById(categoryId);
