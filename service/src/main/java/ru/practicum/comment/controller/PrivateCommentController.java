@@ -20,25 +20,30 @@ public class PrivateCommentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CommentResponseDto createComment(@PathVariable @Positive Long userId, @RequestBody @Valid CommentRequestDto commentRequestDto) {
+    public CommentResponseDto createComment(@PathVariable @Positive Long userId,
+                                            @RequestBody @Valid CommentRequestDto commentRequestDto) {
         log.info("Создание комментария");
         return commentService.createComment(userId, commentRequestDto);
     }
 
     @PatchMapping("/{commentId}")
-    public CommentResponseDto updateComment(@PathVariable @Positive Long userId, @PathVariable @Positive Long commentId, @RequestBody @Valid CommentRequestDto commentRequestDto) {
+    public CommentResponseDto updateComment(@PathVariable @Positive Long userId,
+                                            @PathVariable @Positive Long commentId,
+                                            @RequestBody @Valid CommentRequestDto commentRequestDto) {
         log.info("Редактирование комментария");
         return commentService.updateComment(userId, commentId, commentRequestDto);
     }
 
     @GetMapping("/{commentId}")
-    public CommentResponseDto getCommentById(@PathVariable @Positive Long userId, @PathVariable @Positive Long commentId) {
+    public CommentResponseDto getCommentById(@PathVariable @Positive Long userId,
+                                             @PathVariable @Positive Long commentId) {
         log.info("Получить комментарий с userId: {}, commentId: {}", userId, commentId);
         return commentService.getCommentById(userId, commentId);
     }
 
     @DeleteMapping("/{commentId}")
-    public CommentResponseDto deleteComment(@PathVariable @Positive Long userId, @PathVariable @Positive Long commentId) {
+    public CommentResponseDto deleteComment(@PathVariable @Positive Long userId,
+                                            @PathVariable @Positive Long commentId) {
         log.info("Удалить комментарий по его id: {}", commentId);
         return commentService.deleteCommentById(userId, commentId);
     }

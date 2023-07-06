@@ -5,6 +5,10 @@ import ru.practicum.comment.model.Comment;
 
 public class CommentMapper {
     public static CommentResponseDto toCommentResponseDto(Comment comment) {
-        return new CommentResponseDto(comment.getId(), comment.getEvent().getId(), comment.getText(), comment.getUser().getName(), comment.getCreated());
+        return new CommentResponseDto(comment.getId(),
+                comment.getEvent().getId(),
+                comment.getText(),
+                comment.getUser().getName(),
+                comment.getCreated());
     }
 }
