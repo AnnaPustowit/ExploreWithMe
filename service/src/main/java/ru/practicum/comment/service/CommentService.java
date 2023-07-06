@@ -11,9 +11,7 @@ public interface CommentService {
 
     CommentResponseDto updateComment(Long userId, Long commentId, CommentRequestDto commentRequestDto);
 
-    List<CommentResponseDto> getAllComments(Long eventId, String text,
-                                            LocalDateTime rangeStart, LocalDateTime rangeEnd,
-                                            String sort, Integer from, Integer size);
+    List<CommentResponseDto> getAllComments(Long eventId, String text, LocalDateTime rangeStart, LocalDateTime rangeEnd, String sort, Integer from, Integer size);
 
     CommentResponseDto getCommentById(Long userId, Long commentId);
 
@@ -23,7 +21,5 @@ public interface CommentService {
 
     CommentResponseDto publishComment(Long userId, Long commentId);
 
-    List<CommentResponseDto> getCommentsByAdmin(Long userId, Long eventId, String text,
-                                                LocalDateTime rangeStart, LocalDateTime rangeEnd,
-                                                String sort, Integer from, Integer size);
+    List<CommentResponseDto> getCommentsByAdmin(Long userId, Long eventId, String text, LocalDateTime rangeStart, LocalDateTime rangeEnd, String sort, Integer from, Integer size);
 }

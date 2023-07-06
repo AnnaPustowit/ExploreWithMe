@@ -70,9 +70,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentResponseDto> getAllComments(Long eventId, String text,
-                                                   LocalDateTime rangeStart, LocalDateTime rangeEnd,
-                                                   String sort, Integer from, Integer size) {
+    public List<CommentResponseDto> getAllComments(Long eventId, String text, LocalDateTime rangeStart, LocalDateTime rangeEnd, String sort, Integer from, Integer size) {
         if ((sort != null) && (!"ASC".equalsIgnoreCase(sort)) && (!"DESC".equalsIgnoreCase(sort))) {
             throw new InvalidParameterException("Некорректные данные сортировки");
         }
@@ -82,8 +80,7 @@ public class CommentServiceImpl implements CommentService {
                 throw new InvalidParameterException("Время начала должно быть раньше времени конца");
             }
         }
-        return commentRepository.getComments(eventId, text, rangeStart, rangeEnd, sort, CommentState.PUBLISHED, pageable).stream()
-                .map(c -> CommentMapper.toCommentResponseDto(c)).collect(Collectors.toList());
+        return commentRepository.getComments(eventId, text, rangeStart, rangeEnd, sort, CommentState.PUBLISHED, pageable).stream().map(c -> CommentMapper.toCommentResponseDto(c)).collect(Collectors.toList());
     }
 
     @Override
@@ -131,9 +128,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public List<CommentResponseDto> getCommentsByAdmin(Long userId, Long eventId, String text,
-                                                       LocalDateTime rangeStart, LocalDateTime rangeEnd,
-                                                       String sort, Integer from, Integer size) {
+    public List<CommentResponseDto> getCommentsByAdmin(Long userId, Long eventId, String text, LocalDateTime rangeStart, LocalDateTime rangeEnd, String sort, Integer from, Integer size) {
         if (sort != null && !"ASC".equalsIgnoreCase(sort) && !"DESC".equalsIgnoreCase(sort)) {
             throw new InvalidParameterException("Некорректные данные сортировки");
         }
@@ -145,8 +140,7 @@ public class CommentServiceImpl implements CommentService {
             }
         }
 
-        return commentRepository.getCommentsByAdmin(userId, eventId, text, rangeStart, rangeEnd, sort, CommentState.PUBLISHED, pageable).stream()
-                .map(c -> CommentMapper.toCommentResponseDto(c)).collect(Collectors.toList());
+        return commentRepository.getCommentsByAdmin(userId, eventId, text, rangeStart, rangeEnd, sort, CommentState.PUBLISHED, pageable).stream().map(c -> CommentMapper.toCommentResponseDto(c)).collect(Collectors.toList());
     }
 
     void validateUser(Optional<User> user, Long userId) {
