@@ -73,7 +73,7 @@ public class CommentServiceImpl implements CommentService {
     public List<CommentResponseDto> getAllComments(Long eventId, String text,
                                                    LocalDateTime rangeStart, LocalDateTime rangeEnd,
                                                    String sort, Integer from, Integer size) {
-        if (sort != null && !"ASC".equalsIgnoreCase(sort) && !"DESC".equalsIgnoreCase(sort)) {
+        if ((sort != null) && (!"ASC".equalsIgnoreCase(sort)) && (!"DESC".equalsIgnoreCase(sort))) {
             throw new InvalidParameterException("Некорректные данные сортировки");
         }
         PageRequest pageable = PageRequest.of(from / size, size);
