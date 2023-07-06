@@ -13,6 +13,5 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 public class CommentRequestDto {
     Long eventId;
-    @NotEmpty
-    String text;
+    @NotEmpty String text;
 }
