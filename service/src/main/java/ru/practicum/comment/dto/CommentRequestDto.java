@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -13,5 +14,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 public class CommentRequestDto {
     Long eventId;
-    @NotEmpty String text;
+    @NotEmpty
+    @Size(max = 2000)
+    String text;
 }
